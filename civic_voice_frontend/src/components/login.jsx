@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function Login() {
-  const [email, setEamil] = useState("");
+  const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [err, setErr] = useState("");
   const navigate = useNavigate();
@@ -16,7 +16,7 @@ function Login() {
       return;
     }
     try{
-      const res = await fetch("http://localhost:5000/register",{
+      const res = await fetch("http://localhost:8000/login",{
         method:"POST",
         headers:{"Content-type": "application/json"},
         body:JSON.stringify({
@@ -44,7 +44,7 @@ function Login() {
       >
         <form onSubmit={handleLogin}>
           <center>
-            <h1 className="text-primary mb-3">Register</h1>
+            <h1 className="text-primary mb-3">Login</h1>
           </center>
 
           <div className="form-floating mb-3">
@@ -54,7 +54,7 @@ function Login() {
               id="email"
               value={email}
               placeholder="name@example.com"
-              onChange={(e)=>setEamil(e.target.value)}
+              onChange={(e)=>setEmail(e.target.value)}
             />
             <label htmlFor="email">Email address</label>
           </div>
