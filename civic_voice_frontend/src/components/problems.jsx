@@ -9,16 +9,25 @@ function Problems() {
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
 
+  const [lat, setLat] = useState(null);
+  const [lng, setLng] = useState(null);
+
   const handleImage = (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    setFile(file); 
-    setPreview(URL.createObjectURL(file));
+    const selected = e.target.files[0];
+    if (!selected) return;
+
+    setFile(selected);
+    setPreview(URL.createObjectURL(selected));
   };
 
   const handleSubmit = async () => {
     if (!file) {
-      alert("Please upload an image first");
+      alert("Please upload an image");
+      return;
+    }
+
+    if (lat === null || lng === null) {
+      alert("Please allow location access");
       return;
     }
 
@@ -27,8 +36,8 @@ function Problems() {
 
     const formData = new FormData();
     formData.append("file", file);
-    formData.append("lat", 0);
-    formData.append("lng", 0);
+    formData.append("lat", lat);
+    formData.append("lng", lng);
     formData.append("description", text);
 
     try {
@@ -38,14 +47,18 @@ function Problems() {
       });
 
       const data = await res.json();
-      setResult(data.issue.type);
+
+      if (res.ok) {
+        setResult(data.issue.type);
+      } else {
+        setResult("Upload failed");
+      }
     } catch (err) {
-      setResult("Error detecting issue");
+      setResult("Server error");
     }
 
     setLoading(false);
   };
-
 
   return (
     <div className="container mt-4">
@@ -83,7 +96,9 @@ function Problems() {
 
         <div className="col-md-6">
           <div className="mb-3">
-            <label className="form-label fw-semibold">Describe the problem</label>
+            <label className="form-label fw-semibold">
+              Describe the problem
+            </label>
             <textarea
               className="form-control"
               rows="4"
@@ -93,16 +108,15 @@ function Problems() {
             />
           </div>
 
-          <div className="mb-3">
-            <Location />
-          </div>
+          {/* Location component */}
+          <Location setLat={setLat} setLng={setLng} />
 
           <button
-            className="btn btn-primary px-4"
+            className="btn btn-primary px-4 mt-2"
             onClick={handleSubmit}
             disabled={loading}
           >
-            {loading ? "Analyzing..." : "Submit"}
+            {loading ? "Submitting..." : "Submit"}
           </button>
 
           {result && (
