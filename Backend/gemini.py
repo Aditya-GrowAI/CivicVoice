@@ -24,6 +24,7 @@ pothole
 garbage
 water_leak
 street_light
+electric_transformer
 unknown
 """
 
@@ -42,5 +43,7 @@ unknown
         return "water_leak"
     elif "light" in text:
         return "street_light"
+    elif "electric_transformer" in text:
+        return "electric_transformer"
     else:
         return "unknown"
