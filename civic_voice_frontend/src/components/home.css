@@ -1,0 +1,203 @@
+/* ================= GLOBAL ================= */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f4f7fb;
+  color: #333;
+}
+
+/* ================= HERO SECTION ================= */
+.hero-section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(15, 32, 39, 0.85),
+      rgba(32, 58, 67, 0.85),
+      rgba(44, 83, 100, 0.85)
+    ),
+    url("https://images.unsplash.com/photo-1465447142348-e9952c393450");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+  color: #fff;
+  padding: 120px 20px;
+}
+
+.hero-section h1 {
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1.25rem;
+  line-height: 1.7;
+  opacity: 0.95;
+}
+
+/* ================= HERO BUTTONS ================= */
+.hero-section .btn {
+  padding: 12px 28px;
+  font-size: 1rem;
+  border-radius: 30px;
+  transition: all 0.3s ease-in-out;
+}
+
+.hero-section .btn-primary {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  border: none;
+  box-shadow: 0 10px 25px rgba(0, 114, 255, 0.35);
+}
+
+.hero-section .btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(0, 114, 255, 0.55);
+}
+
+.hero-section .btn-outline-light {
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+.hero-section .btn-outline-light:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* ================= STATS SECTION ================= */
+.stats-section {
+  margin-top: -70px;
+  position: relative;
+  z-index: 5;
+}
+
+.stats-section .container {
+  background: white;
+  border-radius: 20px;
+  padding: 40px 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+}
+
+.stats-section h3 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0072ff;
+}
+
+.stats-section p {
+  font-weight: 600;
+  color: #555;
+}
+
+/* ================= SECTION HEADINGS ================= */
+section h2 {
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #1a1a1a;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 70px;
+  height: 4px;
+  background: linear-gradient(90deg, #00c6ff, #0072ff);
+  margin: 10px auto 0;
+  border-radius: 5px;
+}
+
+/* ================= HOW IT WORKS ================= */
+section.container.my-5.text-center .col-md-4 {
+  padding: 30px;
+  border-radius: 16px;
+  background: #ffffff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section.container.my-5.text-center .col-md-4:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+}
+
+section.container.my-5.text-center h4 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+/* ================= MAP SECTION ================= */
+section.container.my-5 {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+.leaflet-container {
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 114, 255, 0.25);
+}
+
+/* ================= ISSUE TYPES ================= */
+section.container.my-5.text-center .col-md-3 {
+  background: linear-gradient(145deg, #ffffff, #e6ebf1);
+  border-radius: 18px;
+  padding: 30px 15px;
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+section.container.my-5.text-center .col-md-3:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* ================= ANIMATIONS ================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 90px 15px;
+  }
+
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+
+  .stats-section {
+    margin-top: -40px;
+  }
+}
