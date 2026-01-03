@@ -35,7 +35,7 @@ function Register() {
         return;
       }
       alert("Registration successful");
-      navigate('/Home');
+      navigate('/home');
     }
     catch(error){
       setErr("Server Error");
