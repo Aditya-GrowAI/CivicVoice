@@ -29,7 +29,7 @@ function Login() {
         setErr(data.msg);
         return;
       }
-      navigate('/Home');
+      navigate('/home');
     }
     catch(error){
       setErr("Server Error");
@@ -72,7 +72,7 @@ function Login() {
           </div>
 
           <button className="btn btn-primary w-100 py-2" type="submit">
-            Register
+            Login
           </button>
           {err && <div>{err}</div>}
         </form>
