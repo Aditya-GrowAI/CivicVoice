@@ -1,5 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from "./home";
+import './home.css';
 
 function NavBar() {
   return (
@@ -10,34 +12,40 @@ function NavBar() {
 
           <div className="col-md-6 d-flex justify-content-center">
             <ul className="nav nav-pills">
-              {[
-                { name: "Home", path: "/" },
-                { name: "Problems", path: "/problems" },
-                { name: "Requests", path: "/requests" },
-                { name: "Contact", path: "/contact" },
-                { name: "About", path: "/about" },
-              ].map((item) => (
-                <li className="nav-item" key={item.path}>
-                  <NavLink
-                    to={item.path}
-                    end={item.path === "/"}
-                    className={({ isActive }) =>
-                      "nav-link" + (isActive ? " active" : "")
-                    }
-                  >
-                    {item.name}
-                  </NavLink>
+              {["Home", "Problems", "Requests", "Admin", "About"].map((item) => (
+                <li className={`nav-item ${item === "Home" ? "active" : ""}`} key={item}>
+                  <span className={`nav-link ${item === "Home" ? "active" : ""}`}>
+                    {item}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div className="col-md-3 d-flex justify-content-end gap-2">
-            <button className="btn btn-outline-primary"><Link to="/login">Login</Link></button>
-            <button className="btn btn-outline-primary"><Link to="/register">Sign Up</Link></button>
+            <Link
+              to="/login"
+              className="btn btn-outline-primary auth-btn text-decoration-none"
+            >
+              Login
+            </Link>
+
+            <Link
+              to="/register"
+              className="btn btn-outline-primary auth-btn text-decoration-none"
+            >
+              Sign Up
+            </Link>
           </div>
         </div>
       </header>
+      <section className="hero-section text-center">
+        <h1>Your Voice for a Better City</h1>
+        <p>
+          Report real civic issues like potholes, water leakage, and garbage
+          with location & image. Our AI detects the issue and alerts authorities.
+        </p>
+      </section>
     </div>
   );
 }
