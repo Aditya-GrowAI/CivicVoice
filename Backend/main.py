@@ -24,12 +24,8 @@ Base.metadata.create_all(bind=engine)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-<<<<<<< HEAD
         "http://localhost:5173",
-        "http://127.0.0.1:5173"
-=======
-        "https://civic-voice1-8ktylj823-aditya-growais-projects.vercel.app"
->>>>>>> 17d861a23f8de69132eccdc9da5c56a9e7b046a2
+        "https://civic-voice-cp-git-main-prashanths-projects-18646535.vercel.app"
     ],
     allow_credentials=True,
     allow_methods=["*"],
