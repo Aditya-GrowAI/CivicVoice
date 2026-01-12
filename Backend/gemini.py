@@ -9,9 +9,10 @@ load_dotenv()
 
 API_KEY = os.getenv("GOOGLE_API_KEY")
 
-if not API_KEY:
-    raise RuntimeError("GOOGLE_API_KEY is not set")
-
+def detect_issue(image_bytes: bytes) -> str:
+    if not API_KEY:
+        return "unknown"
+        
 client = genai.Client(api_key=API_KEY)
 
 
