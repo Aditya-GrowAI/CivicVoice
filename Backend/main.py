@@ -25,7 +25,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://civic-voice-cp-git-main-prashanths-projects-18646535.vercel.app" 
+        "https://civic-voice-cp-d38d25s6j-prashanths-projects-18646535.vercel.app/login" 
     ],
     allow_credentials=True,
     allow_methods=["*"],
